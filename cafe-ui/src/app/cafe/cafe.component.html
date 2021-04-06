@@ -1,0 +1,44 @@
+<div class="mdc-layout-grid">
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell--span-6">
+      <app-service-activity-card title="Waiter"
+                                 image="assets/waiter.png"
+                                 [activity$]="waiterService.activity$"
+                                 speechBubbleTop="0%"
+                                 speechBubbleLeft="35%"
+      >
+        <button mat-flat-button color="primary" (click)="placeOrder()">Place Order</button>
+      </app-service-activity-card>
+    </div>
+    <div class="mdc-layout-grid__cell--span-6">
+      <app-service-activity-card title="Kitchen"
+                                 image="assets/kitchen.png"
+                                 [activity$]="kitchenService.activity$"
+                                 speechBubbleTop="0%"
+                                 speechBubbleLeft="71%"
+      >
+      </app-service-activity-card>
+    </div>
+    <div class="mdc-layout-grid__cell--span-6">
+      <app-service-activity-card title="Stockroom"
+                                 image="assets/stock.png"
+                                 [activity$]="stockRoomService.activity$"
+                                 speechBubbleTop="0%"
+                                 speechBubbleLeft="71%"
+      >
+      </app-service-activity-card>
+    </div>
+    <div class="mdc-layout-grid__cell--span-6">
+      <app-service-activity-card title="Cashier"
+                                 image="assets/cashier.png"
+                                 [activity$]="cashierService.activity$"
+                                 speechBubbleTop="0%"
+                                 speechBubbleLeft="71%"
+      >
+      </app-service-activity-card>
+    </div>
+    <div class="mdc-layout-grid__cell--span-12">
+    </div>
+  </div>
+</div>
+

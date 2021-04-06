@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - include:
+      file: leaderelection.changelog.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: feed.changelog.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: create-axon-tables.yaml
+      relativeToChangelogFile: true
+
+

@@ -1,0 +1,80 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-feed-tables
+      author: monkey codes
+      changes:
+        - createTable:
+            tableName: feed_entry
+            columns:
+              - column:
+                  name: sequence_number
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: entity_id
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: entry_id
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: type
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: payload
+                  type: clob
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created
+                  type: timestamp
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: feed_position
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: url
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_processed_entry_page_url
+                  type: varchar(500)
+              - column:
+                  name: last_processed_entry_id
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated
+                  type: timestamp
+                  constraints:
+                    nullable: false
+        - createIndex:
+            tableName: feed_entry
+            indexName: feed_entry_id_idx
+            unique: true
+            columns:
+              - column:
+                  name: entry_id
+
+
+
+
+

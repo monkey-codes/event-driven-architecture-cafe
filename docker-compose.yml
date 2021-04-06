@@ -1,0 +1,27 @@
+version: "3"
+services:
+  waiter:
+    image: monkeycodes/cafe-waiter
+    container_name: waiter
+    ports:
+      - 8080:8080
+  kitchen:
+    image: monkeycodes/cafe-kitchen
+    container_name: kitchen
+    ports:
+      - 8081:8081
+  stockroom:
+    image: monkeycodes/cafe-stockroom
+    container_name: stockroom
+    ports:
+      - 8082:8082
+  cashier:
+    image: monkeycodes/cafe-cashier
+    container_name: cashier
+    ports:
+      - 8083:8083
+  ui:
+    image: monkeycodes/cafe-ui
+    container_name: ui
+    ports:
+      - 4200:80

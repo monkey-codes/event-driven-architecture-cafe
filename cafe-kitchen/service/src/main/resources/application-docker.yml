@@ -1,0 +1,5 @@
+atomfeed:
+  client:
+    schedules:
+      - cron: "*/1 * * * * *"
+        url: "http://waiter:8080/feed"

@@ -1,0 +1,92 @@
+containers:
+  maven:
+    image: maven:3-openjdk-11
+    working_directory: /code
+    volumes:
+      - local: <{batect.project_directory}
+        container: /code
+        options: cached
+      - type: cache
+        name: maven-cache
+        container: /root/.m2
+
+  node:
+    image: node:12-alpine
+    working_directory: /code
+    enable_init_process: true
+    volumes:
+      - local: <{batect.project_directory}/cafe-ui
+        container: /code
+        options: cached
+      - type: cache
+        name: node_modules
+        container: /code/node_modules
+      - type: cache
+        name: npm_cache
+        container: /root/.npm
+
+  docker:
+    image: docker:18.06.3-ce
+    working_directory: /code
+    volumes:
+      - local: <{batect.project_directory}
+        container: /code
+        options: cached
+      - local: /var/run/docker.sock
+        container: /var/run/docker.sock
+
+  docker-compose:
+    image: docker/compose:alpine-1.28.6
+    working_directory: /code
+    volumes:
+      - local: <{batect.project_directory}
+        container: /code
+        options: cached
+      - local: /var/run/docker.sock
+        container: /var/run/docker.sock
+
+tasks:
+  build-backend:
+    description: Build backend
+    run:
+      container: maven
+      command: mvn clean verify -Drevision=1
+
+  npm-install:
+    description: Install UI packages
+    run:
+      container: node
+      command: npm install
+
+  build-ui:
+    description: Build UI
+    run:
+      container: node
+      command: npm run build
+
+  dockerize:
+    description: Build Docker Image
+    run:
+      container: docker
+      command: >
+        sh -c '
+        docker build -t monkeycodes/cafe-waiter -f Dockerfile-service --build-arg JAR_FILE=cafe-waiter-service-1.jar ./cafe-waiter/service/target &&
+        docker build -t monkeycodes/cafe-kitchen -f Dockerfile-service --build-arg JAR_FILE=cafe-kitchen-service-1.jar ./cafe-kitchen/service/target &&
+        docker build -t monkeycodes/cafe-stockroom -f Dockerfile-service --build-arg JAR_FILE=cafe-stockroom-service-1.jar ./cafe-stockroom/service/target &&
+        docker build -t monkeycodes/cafe-cashier -f Dockerfile-service --build-arg JAR_FILE=cafe-cashier-service-1.jar ./cafe-cashier/service/target &&
+        docker build -t monkeycodes/cafe-ui -f Dockerfile-ui --build-arg FILES=cafe-ui/ ./cafe-ui/dist'
+
+  run:
+    description: Run App
+    run:
+      container: docker-compose
+      command: docker-compose up
+
+  go:
+    description: Do everything
+    prerequisites:
+      - build-backend
+      - npm-install
+      - build-ui
+      - dockerize
+      - run

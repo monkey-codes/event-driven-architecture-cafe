@@ -1,0 +1,20 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{title}}</mat-card-title>
+    <mat-card-subtitle>Activity</mat-card-subtitle>
+  </mat-card-header>
+  <div class="img-overlay">
+    <img mat-card-image src="{{image}}" alt="Photo of a {{title}} activity">
+    <div *ngIf="this.cardActivity$ | async as activity" class="bubble-overlay"
+         [ngStyle]="{'top': speechBubbleTop, 'left': speechBubbleLeft }">
+      <app-speech-bubble *ngIf="showSpeechBubble"
+                         (closeBubble)="showSpeechBubble = false"
+                         [message]="activity.activity"></app-speech-bubble>
+    </div>
+  </div>
+  <mat-card-content>
+  </mat-card-content>
+  <mat-card-actions>
+    <ng-content></ng-content>
+  </mat-card-actions>
+</mat-card>

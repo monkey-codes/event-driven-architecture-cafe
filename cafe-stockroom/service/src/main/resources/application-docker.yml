@@ -1,0 +1,7 @@
+atomfeed:
+  client:
+    schedules:
+      - cron: "*/1 * * * * *"
+        url: "http://kitchen:8081/feed"
+
+

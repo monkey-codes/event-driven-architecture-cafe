@@ -1,0 +1,41 @@
+axon:
+  axonserver:
+    enabled: false
+  serializer:
+    general: jackson
+    events: jackson
+    messages: jackson
+
+spring:
+  application:
+    name: waiter-service
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,beans"
+
+atomfeed:
+  server:
+    page-size: 10
+    title: Waiter Service Event Feed
+    author: Monkey Codes
+  client:
+    schedules:
+      - cron: "*/1 * * * * *"
+        # kitchen feed
+        url: "http://localhost:8081/feed"
+      - cron: "*/1 * * * * *"
+        # stockroom feed
+        url: "http://localhost:8082/feed"

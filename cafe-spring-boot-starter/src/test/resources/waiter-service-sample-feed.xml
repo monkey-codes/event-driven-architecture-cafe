@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Waiter Service Event Feed</title>
+    <link rel="self" href="http://localhost:8080/feed" />
+    <link rel="via" href="http://localhost:8080/feed/0" />
+    <author>
+        <name>Monkey Codes</name>
+    </author>
+    <id>http://localhost:8080/feed</id>
+    <updated>2021-03-20T05:36:33Z</updated>
+    <entry>
+        <title>OrderTakenEvent sequence: 2 entryId: urn:uuid:e14d8a6a-4e9d-4861-95e6-278ed07af3a7 entityId: urn:uuid:772c558a-c871-49db-aa90-2126b29a963c</title>
+        <link rel="self" href="http://localhost:8080/feed-entry/e14d8a6a-4e9d-4861-95e6-278ed07af3a7" />
+        <category term="OrderTakenEvent" scheme="http://cafe/events/categories/type" />
+        <id>urn:uuid:e14d8a6a-4e9d-4861-95e6-278ed07af3a7</id>
+        <updated>2021-03-20T05:36:33Z</updated>
+        <content type="application/vnd.cafe.event-envelope+json">eyJwYXlsb2FkcyI6W3siY29udGVudFR5cGUiOiJhcHBsaWNhdGlvbi92bmQuY2FmZS5vcmRlci10YWtlbi1ldmVudC12MStqc29uIiwiY29udGVudCI6eyJ3YWl0ZXJJZCI6IjliNWYyNDFmLWY3ZDUtNDhlOS04OTA4LTAzMTg5MDVkMjlhNyIsIm9yZGVySWQiOiI3NzJjNTU4YS1jODcxLTQ5ZGItYWE5MC0yMTI2YjI5YTk2M2MiLCJpdGVtcyI6W3sibmFtZSI6ImJ1cmdlciIsInF1YW50aXR5IjoxfV19fV19</content>
+        <summary type="text">OrderTakenEvent occurred on entity 772c558a-c871-49db-aa90-2126b29a963c</summary>
+    </entry>
+    <entry>
+        <title>OrderTakenEvent sequence: 1 entryId: urn:uuid:1c4d5621-6d51-43fe-ac28-b1bcbe926b60 entityId: urn:uuid:15e6e29b-161d-40d0-ba98-67619b838878</title>
+        <link rel="self" href="http://localhost:8080/feed-entry/1c4d5621-6d51-43fe-ac28-b1bcbe926b60" />
+        <category term="OrderTakenEvent" scheme="http://cafe/events/categories/type" />
+        <id>urn:uuid:1c4d5621-6d51-43fe-ac28-b1bcbe926b60</id>
+        <updated>2021-03-20T05:36:30Z</updated>
+        <content type="application/vnd.cafe.event-envelope+json">eyJwYXlsb2FkcyI6W3siY29udGVudFR5cGUiOiJhcHBsaWNhdGlvbi92bmQuY2FmZS5vcmRlci10YWtlbi1ldmVudC12MStqc29uIiwiY29udGVudCI6eyJ3YWl0ZXJJZCI6IjQ1ZjNiOWE2LWE5Y2ItNGJkNS04YmYzLWFjZWFhYjA2N2FlOSIsIm9yZGVySWQiOiIxNWU2ZTI5Yi0xNjFkLTQwZDAtYmE5OC02NzYxOWI4Mzg4NzgiLCJpdGVtcyI6W3sibmFtZSI6ImJ1cmdlciIsInF1YW50aXR5IjoxfV19fV19</content>
+        <summary type="text">OrderTakenEvent occurred on entity 15e6e29b-161d-40d0-ba98-67619b838878</summary>
+    </entry>
+</feed>

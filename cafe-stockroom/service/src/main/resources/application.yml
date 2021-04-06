@@ -1,0 +1,43 @@
+axon:
+  axonserver:
+    enabled: false
+  serializer:
+    general: jackson
+    events: jackson
+    messages: jackson
+
+server:
+  port: 8082
+
+spring:
+  application:
+    name: stockroom-service
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,beans"
+
+atomfeed:
+  server:
+    page-size: 10
+    title: Stockroom Service Event Feed
+    author: Monkey Codes
+  client:
+    schedules:
+      - cron: "*/1 * * * * *"
+        url: "http://localhost:8081/feed"
+
+

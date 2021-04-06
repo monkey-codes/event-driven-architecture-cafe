@@ -1,0 +1,14 @@
+FROM httpd:2.4.46-alpine
+ARG FILES
+COPY ${FILES} /usr/local/apache2/htdocs/
+RUN echo -e '<IfModule mod_rewrite.c>\n\
+RewriteEngine On\n\
+RewriteBase /\n\
+RewriteRule ^index\.html$ - [L]\n\
+RewriteCond %{REQUEST_FILENAME} !-f\n\
+RewriteCond %{REQUEST_FILENAME} !-d\n\
+RewriteRule . /index.html [L]\n\
+</IfModule>'\
+> /usr/local/apache2/htdocs/.htaccess
+RUN sed -i '286s/None/All/' /usr/local/apache2/conf/httpd.conf
+RUN sed -i '199s/#//' /usr/local/apache2/conf/httpd.conf

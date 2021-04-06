@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-leaderelection-table
+      author: monkey codes
+      changes:
+        - createTable:
+            tableName: int_lock
+            columns:
+              - column:
+                  name: lock_key
+                  type: char(36)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: region
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: client_id
+                  type: char(36)
+              - column:
+                  name: created_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+
+        - addPrimaryKey:
+            tableName: int_lock
+            columnNames: lock_key, region
+            constraintName: lock_pk

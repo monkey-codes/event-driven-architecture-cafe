@@ -1,0 +1,9 @@
+<mat-toolbar color="primary" [class.mat-elevation-z6]="true">
+  <button mat-icon-button color="accent"
+          aria-label="Example icon button with a menu icon"
+          (click)="menuToggled.emit(true)">
+    <mat-icon *ngIf="!opened">menu</mat-icon>
+    <mat-icon *ngIf="opened">menu_open</mat-icon>
+  </button>
+  <a mat-flat-button color="primary" class="logo" routerLink="/">Event Driven Cafe</a>
+</mat-toolbar>
