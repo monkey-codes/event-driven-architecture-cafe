@@ -35,7 +35,7 @@ class Cook {
                 waiterId = command.waiterId,
                 items = command.items
         ))
-        deadlineManager.schedule(Duration.ofSeconds(5), "orderPreparationTimer")
+        deadlineManager.schedule(Duration.ofSeconds(2), "orderPreparationTimer")
     }
 
     @EventSourcingHandler
