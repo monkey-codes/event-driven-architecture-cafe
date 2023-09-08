@@ -1,5 +1,5 @@
 # Event Driven Architecture Cafe
-Sample project for my blog post on [event-driven architecture with Atom feeds](https://blog.monkey.codes/event-driven-architecture-with-atom-feeds/). The system consists of 4 microservices: *waiter, kitchen, stockroom, and cashier.* Each service is built
+Sample project for my blog post on [event-driven architecture with Atom feeds](https://johanzietsman.com/event-driven-architecture-with-atom-feeds/). The system consists of 4 microservices: *waiter, kitchen, stockroom, and cashier.* Each service is built
 on top of the [Axon Framework](https://axoniq.io/) and uses [Event Sourcing](https://martinfowler.com/eaaDev/EventSourcing.html)
 for persistence.
 
